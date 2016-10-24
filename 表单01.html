@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表单001</title>
+</head>
+<body>
+<FORM method="POST" action="login.asp">
+    <TABLE border="0" cellpadding="0" cellspacing="0" style="border-collaps:collaps" border-color:#111111 width="60%" id="AutoNumber1">
+        <TR>
+            <TD width="53%">
+                姓名：<INPUT type="text" name="fullname" size="20"><BR>
+                密码：<INPUT type="password" name="pwd" size="20">
+            </TD>
+            <TD width="47%">
+                性别：<INPUT type="radio" name="sex" value="男"checked>男&nbsp;
+                <INPUT type="radio" name="sex" value="女" >女
+            </TD>
+        </TR>
+        <TR>
+            <TD width="47%">
+                爱好：<INPUT type="checkbox" name="music" value="ON">音乐&nbsp;
+                <INPUT type="checkbox" name="sport" value="ON" > 运动
+            </TD>
+            <TD width="53%">
+                学历：<SELECT size="1" name="edu_level">
+                <OPTION>小学</OPTION>
+                <OPTION>初中</OPTION>
+                <OPTION selected>大学</OPTION>
+                <OPTION>以上</OPTION>
+            </SELECT>
+            </TD>
+        </TR>
+        <TR>
+            <TD width="100%">
+                自我介绍：<BR>
+                <TEXTAREA row="5" name="remark" cols="50"></TEXTAREA>
+            </TD>
+        </TR>
+    </TABLE>
+    <P>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type="submit" value="提交" name="B1">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<INPUT type="reset" value="重置" name="B2">
+    </P>
+</FORM>
+</body>
+</html>
