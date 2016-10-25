@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>hello</title>
+    <script>
+        function hello_lady(){
+            alert("您好，女士！");
+        }
+    </script>
+</head>
+<body>
+ <form name="form1">
+     <input type="button" name="1" value="您好，先生！" onclick="alert('您好，先生！');">
+     <input type="button" name="2" value="您好，女士！" onclick="return hello_lady()">
+ </form>
+</body>
+</html>
