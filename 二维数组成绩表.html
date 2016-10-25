@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>学生成绩表</title>
+</head>
+<body>
+    <pre>
+                   成绩表
+        姓名     英语    计算机    体育
+    --------------------------------------------
+    <script>
+        var students, i,j;
+        student=new Array();
+        student[0]=new Array("张月",78,92,100);
+        student[1]=new Array("李亮",64,76,95);
+        student[2]=new Array("王丽",100,65,80);
+        student[3]=new Array("何方",90,80,70);
+        for(i=0;i<student.length;i++)
+        {
+            for(j=0;j<student[i].length;j++)
+            {
+                document.write(student[i][j]+"\t");
+
+            }
+            document.writeln();
+            document.writeln(" ");
+
+        }
+    </script>
+    -----------------------------------------
+</pre>
+</body>
+</html>
