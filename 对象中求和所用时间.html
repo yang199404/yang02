@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>时间</title>
+</head>
+<body>
+<script>
+    var t1,t2,sum=0,i,hTime;
+    t1=new Date();
+    document.write("当前的时间为："+t1.toLocaleString()+":"+t1.getMilliseconds()+"<BR>");
+    for(i=0;i<999999;i++)
+    {
+        sum+=sum;
+    }
+    t2=new Date();
+    document.write("之后的时间为："+t2.toLocaleString()+":"+t2.getMilliseconds()+"<BR>");
+    hTime=t2.getTime()-t1.getTime();
+    document.write("相差的时间为："+hTime);
+</script>
+</body>
+</html>
