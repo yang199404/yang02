@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>鼠标坐标</title>
+    <script>
+        function show_mouse(event)
+    {
+        x=event.clientX
+        y=event.clientY
+        alert("x的坐标为："+x+"   y的坐标为："+y)
+    }
+    </script>
+
+</head>
+<body onmousedown="show_mouse(event)">
+<p>请点击！</p>
+
+</body>
+</html>

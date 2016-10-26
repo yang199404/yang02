@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>点击鼠标按钮</title>
+    <script>
+        function whichButton(event)
+        {
+            var btnum=event.button;
+            if(btnum==0)
+            {
+                alert("您按下了左键！");
+            }
+            else if(btnum==2)
+            {
+                alert("您按下了右键！");
+            }
+            else if(btnum==1)
+            {
+                alert("您按下了中键！");
+            }
+            else
+            {
+                alert("您点击了"+btnum+"号键，不能确定它的名称！");
+            }
+        }
+    </script>
+</head>
+<body onmousedown="whichButton(event)">
+    <p>
+        请点击鼠标
+    </p>
+
+</body>
+</html>
