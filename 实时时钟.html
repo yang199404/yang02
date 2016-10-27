@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>钟表</title>
+</head>
+<body>
+    <script>
+        function distime()
+        {
+            var p;
+            var today=new Date();
+            var hh=today.getHours();
+            var mm=today.getMinutes();
+            var ss=today.getSeconds();
+            if(hh>12) {
+                p="下午";
+            }
+            else {
+                p="上午";
+            }
+            document.getElementById("myclock").innerHTML="<h1>现在是"+p+":"+hh+":"+mm+":"+ss+"</h1>>";
+        }
+        setInterval("distime()",1000);
+
+    </script>
+<div id="myclock"></div>
+</body>
+</html>

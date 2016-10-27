@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>页面自动跳转</title>
+    <script language="javascript">
+         var timeout;
+         function window_onload()
+         {
+             timeout=setTimeout("window.navigate('http://www.baidu.com');",3000);
+         }
+         function window_onkeydown()
+         {
+             clearTimeout(timeout);
+         }
+    </script>
+</head>
+<body onkeydown="return window_onkeydown()"  onload="return window_onload()">
+
+</body>
+</html>
