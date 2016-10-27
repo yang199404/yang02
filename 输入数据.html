@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>输入数据</title>
+    <script>
+        function avalidate()//XXXX-XXXX-XXXX-XXXX
+        {
+            if(!checkName(document.myform.myname.value))
+            {
+                return false;
+            }
+            if(!checkNum(document.myform.mynum.value))
+            {
+                return false;
+            }
+            alert("数据完全");
+            return true;
+        }
+        function checkName(s)
+        {
+            var ok= s.length;
+            if(!ok){
+                alert("姓名格式错误！");
+                return false;
+            }
+            else{
+                return true;
+            }
+        }
+        function checkNum(n)
+        {
+            var ok,ch;
+            var i=0;
+            ok= (n.charAt(4)=="-"&&n.charAt(9)=="-"&&n.charAt(14)=="-");
+            if(!ok){
+                alert(n+"卡号出现错误");
+                return false;
+
+            }
+            while(i<19)
+            {
+                ch= n.charAt(i);
+                if((ch!="-")&&(ch>"9"||ch<"0")) {
+                    alert(n + "卡号出现错误，请重新输入");
+                    return false;
+
+                }
+                i++;
+            }
+            return true;
+        }
+    </script>
+</head>
+<body>
+<form name="myform" onSubmit="return avalidate();">
+<p>姓名：<input type="text" name="myname" value=""></p>
+<p>卡号：<input type="text" name="mynum" value=" "></p>
+<p><input type="submit" value="确认"></p>
+
+</form>
+</body>
+</html>
