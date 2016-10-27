@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>遍历元素</title>
+</head>
+<body>
+<form name="myform">
+    <table>
+        <tr>
+            <TD width="60%">姓名：<input type="text" name="fullname" size="20"><BR>
+                            密码：<input type="password" name="pwd" size="20"></TD>
+            <TD width="40%">性别：<input type="radio" name="sex" value="男" checked="checked">男&nbsp
+                                 <input type="radio" name="sex" value="女" >女</TD>
+        </tr>
+        <tr>
+            <TD width="50%">爱好：<input type="checkbox" name="2" value="音乐" >音乐&nbsp
+                                 <input type="checkbox" name="3" value="运动" >运动</TD>
+            <TD width="50%">学历：<select size="1" name="4">
+                <option>小学</option>
+                <option>初中</option>
+                <option selected>大学</option>
+                <option>大学以上</option>
+                </select>
+            </TD>
+        </tr>
+        <tr>
+            <TD width="100%" colspan="2">自我介绍：<BR>
+                <textarea name="text" cols="60" rows="5"></textarea>
+        </tr>
+
+    </table>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="button" name="submit" value="提交" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <input type="button" name="reset" value="重置">
+</form>
+<HR>
+<script>
+    var myform, i,num;
+    myform=document.myform;
+    document.write("<p>表中有"+myform.length+"个元素：</p>");
+    for(i=0;i<myform.length;i++)
+    {
+        if(i>0)
+        {
+            document.write(",");
+        }
+        num=myform.elements[i];
+        document.write(num.name);
+    }
+
+</script>
+</body>
+</html>
