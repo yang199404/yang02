@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>在线调查1</title>
+    <script>
+        function GetEffected(effects) {
+            var i;
+            for (i = 0; i < effects.length; i++) {
+                if (effects[i].checked) {
+                    return effects[i].value;
+                }
+            }
+            return "没有选择！";
+
+        }
+        function GetChecked(checks)
+        {
+            var j,result="";
+            for(j=0;j<checks.length;j++)
+            {
+                if(checks[j].checked)
+                {
+                    result+="["+checks[j].value+"]";
+                }
+
+            }
+            return result;
+        }
+        function Show_Result()
+        {
+            var f,msg;
+            f=document.myform;
+            msg="您对主页效果的评价是："+GetEffected(f.thieffect);
+            msg+="\n您希望出现以下栏目："+GetChecked(f.this_check);
+            alert(msg);
+        }
+    </script>
+</head>
+<body>
+<table width="400">
+    <tr>
+        <td align="center">
+            <h1>在线调查</h1>
+            <p>您感觉本站的主页效果如何(单选)：</p>
+            <form name="myform">
+                <p >
+                  <input type="radio" name="thieffect" value="非常好" >非常好
+                  <input type="radio" name="thieffect" value="好">好
+                  <input type="radio" name="thieffect" value="一般">一般
+                </p>
+                <p>您希望本站出现以下什么栏目(多选)：</p>
+                <p>
+                    <input type="checkbox" name="this_check" value="新闻" > 新闻
+                    <input type="checkbox" name="this_check" value="娱乐" > 娱乐
+                    <input type="checkbox" name="this_check" value="教育" > 教育
+                </p>
+                <p><input type="button" name="submit" value="提交" onClick="Show_Result()"></p>
+            </form>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

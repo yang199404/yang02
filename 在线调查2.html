@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>在线调查2</title>
+    <script>
+        function GetGraduate(choosen1)
+        {
+            var i;
+           for(i=0;i<choosen1.length;i++)
+           {
+               if(choosen1[i].selected)
+               {
+                   return choosen1.options[i].text;
+               }
+           }
+        }
+        function GetHobby(choosen2)
+        {
+            var j,result="";
+            for(j=0;j<choosen2.length;j++)
+            {
+                if(choosen2[j].selected) {
+                    result += "[" + choosen2.options[j].text + "]";
+                }
+            }
+            return result;
+        }
+        function ShowResult()
+        {
+            var msg;
+            f=document.myform;
+            msg="您的学历是："+GetGraduate(f.choose2);
+            msg+="\n您的爱好是:"+GetHobby(f.choose1);
+            alert(msg);
+        }
+    </script>
+</head>
+<body>
+<form name="myform">
+    <table width="400">
+        <tr>
+            <td align="center" colspan="2">
+                <h1>在线调查</h1>
+                <HR>
+            </td>
+        </tr>
+        <tr>
+            <td width="116">
+                <p>爱好：<BR>
+                    <select size="6" name="choose1" multiple="multiple" >
+                        <option value="1">游泳</option>
+                        <option value="2">篮球</option>
+                        <option value="3">网球</option>
+                        <option value="4">跑步</option>
+                        <option value="5">瑜伽</option>
+                        <option value="6">登山</option>
+                </p>
+            </td>
+            <td width="274">
+                <p>您的学历：<BR>
+                    <select seze="1" name="choose2">
+                        <option>小学</option>
+                        <option>中学</option>
+                        <option selected>大学</option>
+                        <option>大学以上</option>
+                    </select>
+                </p>
+                <p align="center">
+                    <input type="button" name="submit" value="提交" onClick="ShowResult()">
+                </p>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
