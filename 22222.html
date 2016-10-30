@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>-</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            ul{
+                list-style:none;
+            }
+            a{
+                text-decoration:none;
+            }
+            #contain
+            {
+                height:100px;
+                width:500px;
+                margin:auto;
+                margin-top:50px;
+
+            }
+            #contain li
+            {
+                float:left;
+                height:40px;
+                width:150px;
+                background:#cccccc;
+                color:#000000;
+                margin-left:15px;
+                line-height:40px;
+                text-align:center;
+            }
+            #contain #menu
+            {
+                overflow:hidden;
+            }
+            #contain #context
+            {
+                height:200px;
+                width:500px;
+                background:#cccccc;
+                color:#ff0000;
+                border-top:2px solid #000000;
+            }
+            #menu .select{
+                 background:#000000;
+                 color:#0000ff;
+             }
+            #context div
+            {
+                display:none;
+            }
+            #context .selected
+            {
+                display:block;
+            }
+        </style>
+</head>
+<body>
+<div id="contain">
+    <ul id="menu">
+        <li class="select">javascript</li>
+        <li>html</li>
+        <li>css</li>
+    </ul>
+    <div id="context">
+        <div class="selected">1111111111</div>
+        <div>2222222222</div>
+        <div>3333333333333</div>
+    </div>
+</div>
+<script>
+    var oMenu=document.getElementById("menu");
+    var aLi=oMenu.getElementsByTagName("li");
+    var oContext=document.getElementById("context");
+    var aDiv=oContext.getElementsByTagName("div");
+    for(i=0;i<aLi.length;i++)
+    {
+        aLi[i].index=i;
+        aLi[i].onclick=function()
+        {
+
+            for(var i=0;i<aLi.length;i++)
+            {
+                aLi[i].className="";
+                aDiv[i].className="";
+            }
+            this.className="select";
+            aDiv[this.index].className="selected";
+
+        }
+            aLi[i].onselectstart=function()
+            {
+                return false;
+            }
+    }
+</script>
+</body>
+</html>
