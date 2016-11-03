@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta  http-equiv="Content-type" content="text/html; charset=gb2312"/>
+    <title>滤镜</title>
+    <style type="text/css">
+        div
+        {
+            border:#000000 2px solid;
+            font-size:30px;
+            color:#ff0000;
+        }
+        #div1{
+                filter:shadow(Color=#ff0,Direction=45,Strength=5);
+        }
+        #div2{
+                filter:dropshadow(color=#ff00ff,offx=10.offy=15,positive=1);
+        }
+        #div3{
+                filter:dropshadow(color=#000000,offx=40,offy=30,positive=0);
+        }
+    </style>
+
+</head>
+<body>
+    <div id="div1">
+        shadow滤镜效果
+    </div>
+    <div id="div2">
+        dropshadow滤镜效果
+    </div>
+    <div id="div3">
+        dropshadow滤镜效果
+    </div>
+</body>
+</html>
