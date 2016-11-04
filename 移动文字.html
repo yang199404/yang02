@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>移动</title>
+    <script>
+        window.setTimeout("Update()",0);
+        function Update()
+        {
+            var counter=document.getElementById("mov");
+            if(counter.style.left=="4em"||counter.style.left==" ")
+            {
+                counter.style.WebkitTransition="all 1s ease-in-out 0s";
+                counter.style.left="-4em";
+                window.setTimeout("Update()",1000);
+            }
+            else
+            {
+                counter.style.WebkitTrasition=" ";
+                counter.style.left="4em";
+                window.setTimeout("Update()",0);
+            }
+        }
+    </script>
+    <style>
+        #frame {
+            border: #00ff00 solid 1px;
+            overflow: hidden;
+            width: 50px;
+        }
+
+        #mov{
+            font-size:10px;
+            position:relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="frame">
+        <div id="mov">
+            移动文字
+        </div>
+    </div>
+</body>
+</html>
