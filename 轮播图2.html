@@ -19,7 +19,14 @@
             height:3000px;
             width:6000px;
             background:green;
+            position:relative;
+        }
+        #num{
+            z-Index:999;
             position:absolute;
+            bottom:220px;
+            left:260px;
+            top:220px;
         }
          #num li
             {
@@ -32,10 +39,10 @@
              line-height:20px;
              text-align:center;
              margin-left:2px;
-             position:relative;
              left:350px;
              top:220px;
              cursor:pointer;
+
             }
         #num .select
         {
@@ -49,24 +56,22 @@
             width:305px;
             margin-top: 50px;
             margin-left:46px;
+            position:absolute;
         }
-        #pic a
+        #direction
         {
-            display:none;
-        }
-        #pic a.check{
-            display:block;
+            z-Index:999;
+            position:absolute;
+            top:220px;
+            right:580px;
         }
         span{
             background:white;
             height:40px;
             width:40px;
             font-weight: bold;
-            position:relative;
-            top:222px;
-            right:300px;
             color:black;
-            cursor:pointer
+            cursor:pointer;
         }
     </style>
 </head>
@@ -79,7 +84,7 @@
             <li>4</li>
         </ul>
         <div id="pic">
-            <a href="#" class="check"><img src="img/1.jpg"/></a>
+            <a href="#"><img src="img/1.jpg"/></a>
             <a href="#"><img src="img/2.jpg"/></a>
             <a href="#"><img src="img/3.jpg"/></a>
             <a href="#"><img src="img/4.jpg"/></a>
@@ -89,59 +94,66 @@
             <span id="right">&gt;</span>
         </div>
     </div>
-<script>
+<script src="jslib.js"></script>
+    <script>
     var oContain=document.getElementById("contain");
     var aLi=oContain.getElementsByTagName("li");
     var aA=oContain.getElementsByTagName("a");
     var aLeft=document.getElementById("left");
     var aRight=document.getElementById("right");
-    var i, j,index2,Dirc=0;
+    var aImg=document.getElementsByTagName("img");
+    var i, j,Now= 0,zIndex=4;
     for(var i=0;i<aLi.length;i++) {
+        aImg[i].style.zIndex = aImg.length - i;
         aLi[i].index = i;
         aLi[i].onmouseover = function () {
-            Dirc=this.index;
-            changeImg(this.index);
-        }
-       aLeft.onclick=function(){
-           Dirc--;
-           if(Dirc<0){
-               Dirc=aLi.length-1;
-           }
-           changeImg(Dirc);
-       }
-        aRight.onclick=function(){
-            if(Dirc==3){
-                Dirc=0;
-            }
-            else{
-                Dirc++;
-            }
-            changeImg(Dirc);
-        }
-        function changeImg(indexing){
-        for (j = 0; j < aLi.length; j++) {
-            aLi[j].className = "";
-            aA[j].className = "";
-         }
-        aLi[indexing].className = "select";
-        aA[indexing].className = "check";
+            Now=this.index;
+           button(this.index);
         }
     }
-    /*var timer=setInterval(function(){aRight.onclick();},1600);
-    oContain.onmouseover=function(){clearInterval(timer);};
-    oContain.onmouseout=function(){timer=setInterval(function(){aRight.onclick();},1600)};*/
-    var timer;
-    function run() {
-        timer=setInterval(function(){
-            aRight.onclick();
-        },1600);
+    aLeft.onclick=function(){
+        if(Now==0) {
+            Now=3;
+        }
+        else{
+           Now--;
+        }
+        button(Now);
     }
-    oContain.onmouseover=function(){
-        clearInterval(timer);
-    };
-    oContain.onmouseout=function(){
-            run()
-    };
+    aRight.onclick=function(){
+        if(Now==3) {
+            Now=0;
+        }
+        else{
+            Now++;
+        }
+        button(Now);
+    }
+        function button(inde)
+        {
+            for (j = 0; j < aLi.length; j++) {
+                aLi[j].className = "";
+            }
+            aLi[inde].className = "select";
+            var oImg=aImg[inde];
+            oImg.style.opacity=0;
+            oImg.style.filter="alpha(opacity=0)";
+            oImg.style.zIndex=++zIndex;
+            animate(oImg,{opacity:100});
+        }
+        var timer;
+        function run()
+        {
+          timer= setInterval(function(){aRight.onclick();},1000);
+        }
+        oContain.onmouseover=function(){
+            clearInterval(timer);
+            }
+        oContain.onmouseout=function(){
+            run();
+        }
+
+
     </script>
 </body>
 </html>
