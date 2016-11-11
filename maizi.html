@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>maizi</title>
+    <script type="text/javascript" src="clock.js"></script>
+    <style type="text/css">
+        h1,h2,h3,h4,h5,h6,ul,img,body{margin:0px; padding:0px;}/*去上间距*/
+        #container{width:1080px;margin:0px auto;font-size: 10px;}
+        /*布局*/
+        #pagetop{min-height:71px;position:relative;border:#00f solid 1px;}
+        #pagebody{min-height:160px;border:#00f solid 1px;}
+        #pagefooter{min-height:100px;border:#0c6 solid 1px;clear:both;}
+        /*上部*/
+        .indexlogo{width:220px;height:60px;float:left;}
+        .topinfo{width:387px;float:left; line-height:71px;}
+        .topnav{width:450px;float:left;position:absolute;top:10px;right:0px;}
+        .topnavlist{width:470px;}
+        .topnavlist ul{list-style:none;}
+        .topnavlist ul li{float:left;width:80px;}
+        .topnavlist ul li a{text-decoration:none;color:#555555}
+        #nav{text-align:center;}
+        #nav ul{list-style:none;margin:0;padding:0;}
+        #nav ul li{width:80px;line-height:36px;font-size:16px;font-weight:bold;display:inline-block;text-align:center;}
+        #nav ul li a{text-decoration:none;color:white;}
+        .sousuo{position:absolute; background:url(img/top_2.gif);width:1080px;height:36px;text-align:right;text-align: left;text-indent:25px;}
+        /*中部*/
+        #bleft{width:225px;min-height:600px;float:left;}
+        #bmiddle{width:620px;min-height:600px;float:left;margin:5px 2px;border:solid #6ff 1px;}
+        #bright{width:223px;border:solid #6ff 1px;min-height:600px;float:left;}
+        /*中左*/
+        #userbox{position:absolute;top:147px;}
+        #userbox h3{margin:0;padding:0;width:225px;height:30px;line-height:30px;background:url(img/la_7.gif);text-align:center;color:white;font-weight:bold;font-size: 16px;}
+        #userbox ul{list-style:none;padding-left:30px;border:solid 2px red;border-top:none;}
+        #userbox ul li{line-height:24px; text-indent:40px;}
+        #userbox ul li a{text-decoration:none;color:#333333;}
+        #userbox2{position:absolute;top:255px;border:solid 2px red;border-top:none;}
+        #userbox2 h3{margin-bottom:6px;padding:0;width:225px;height:30px;line-height:30px;background:url(img/la_7.gif);text-align:center;color:white;font-weight:bold;font-size: 16px;}
+        #userbox2 ul{list-style:none;margin-bottom: 10px;}
+        #userbox2 h4{color:red;text-indent:10px;font-size:14px;}
+        #userbox2 .spa1{text-indent:125px;text-decoration:none;}
+        .box a{text-decoration:none;color:#555555}
+        .box li{height:30px; line-height:30px;text-indent:25px;border-bottom: 1px dotted #cccccc}
+        .box li span{margin:0 10px;}
+        /*中中*/
+        #banner{width:620px;height:410px;position:relative;top:38px;background-color:lightgray;overflow: hidden;}
+        #banner_list{position:relative;}
+        #banner_list img{width:620px;height:360px;float:left;}
+        #arrow{position:absolute;bottom:10px;}
+        #arrow span{cursor:pointer;font-weight:bold;font-size: 200%;margin-left:10px;line-height:30px;text-align:center;background-color:white;}
+        /*轮播*/
+        #banner ul{list-style:none;height:30px;width:230px;position:absolute;bottom:10px;right:10px;z-index:999;}
+        #banner ul li{cursor:pointer;text-decoration:none;float:left;height:30px;width:30px;margin-left:10px;background:firebrick;line-height:30px;text-align:center;border:3px solid white;}
+        #banner .choose{background:orangered;}
+        /*商品*/
+        .productbox{position:relative;}
+        .productbox .h41{position:absolute;top:45px;background:url(img/ca_1.gif);width:570px;height:31px;line-height:31px;text-indent:30px;}
+        .productbox .h42{position:absolute;top:415px;background:url(img/ca_1.gif);width:570px;height:31px;line-height:31px;text-indent:30px;}
+        .productbox .h43{position:absolute;top:625px;background:url(img/ca_1.gif);width:570px;height:31px;line-height:31px;text-indent:30px;}
+        .more{position:absolute;height:11px;width:33px;right:80px;}
+        #more1{top:54px;}
+        #more2{top:424px;}
+        #more3{top:634px;}
+        .productbox .ul1{list-style:none;position:absolute;top:85px;}
+        .productbox .ul2{list-style:none;position:absolute;top:455px;}
+        .productbox .ul3{list-style:none;position:absolute;top:665px;}
+        .productbox ul li{display:inline-block;margin:2px 5px;text-indent:7px;}
+        .productbox ul li div{text-align: center;}
+        .price{color:red;font-weight:bold;}
+        /*中右*/
+        #bright{position:relative;}
+        #bright .brigh{position:absolute;top:35px;}
+        .brigh h4{color:#FFFFFF;font-size:14px;background:url(img/la_7.gif);width:223px;line-height:30px;text-align:center;}
+        .brigh ul{list-style:none;border:solid 1px red;border-top:none;padding:10px;}
+        .brigh ul li{line-height:25px;text-indent:10px;background:url(img/dot.gif) no-repeat center left;}
+        .brigh ul li a{color:#333333;text-decoration:none;}
+        /*客户服务*/
+        .brigh2 h4{color:#FFFFFF;font-size:14px;background:url(img/la_7.gif);width:223px;line-height:30px;text-align:center;}
+        #bright .brigh2{position:absolute;top:292px;}
+        .brigh2 .kefu{border:solid 1px red;border-top:none;padding:10px;}
+        .brigh2 div{line-height:25px;}
+    </style>
+
+</head>
+<body>
+<div id="container">
+        <!--上-->
+        <div id="pagetop">
+            <div class="indexlogo"><img src="img/logo.gif" alt=""/></div>
+            <div class="topinfo">
+                <span>欢迎登陆麦子商城！要购物？<a href="login.htm">请登录</a> 新用户？<a href="zhuce.htm">请免费注册</a></span>
+            </div>
+            <div class="topnav">
+                <div class="topnavlist">
+                    <ul>
+                        <li><a href="">帮助中心|</a><li>
+                        <li><a href="">客户反馈|</a><li>
+                        <li><a href="">网站地图|</a><li>
+                        <li><a href="">加入收藏</a><li>
+                        <li style="font-family: 黑体"><span id="myclock"></span><li>
+                    </ul>
+                </div>
+                <div>
+                    <marquee direction="up"  scrollamount="2"; height=30px; style="text-indent:70px;">
+                        <a href="hupdong.htm"><img src="img/notice.gif"/>&nbsp最新公告：明天有秒杀活动!</a></BR></BR>
+                         &nbsp&nbsp&nbsp&nbsp&nbsp<a href="hupdong2.htm"><img src="img/notice.gif"/>&nbsp全场双11五折优惠!</a>
+                    </marquee>
+                </div>
+            </div>
+            <!--主导航-->
+            <div id="nav" style="clear:both">
+                <div style="background:url(img/top_1.gif);width:1080px;height:36px;">
+                    <ul id="navlist">
+                        <li><a href="#">网站首页|</a></li>
+                        <li><a href="#">分类导航|</a></li>
+                        <li><a href="#">购物帮助|</a></li>
+                        <li><a href="#">新闻资讯|</a></li>
+                        <li><a href="#">报价单|</a></li>
+                        <li><a href="#">发货单|</a></li>
+                    </ul>
+                </div>
+                <div class="sousuo">
+                    <span style="color:white;font-size:14px;">
+                        商品搜索:
+                    </span>
+                    <span>
+                        <select>
+                            <option>所有分类</option>
+                            <option>最新商品</option>
+                            <option>热卖商品</option>
+                        </select>
+                    </span>
+                    <span>
+                        <input type="text" maxlength="50" size="50"/>
+                        <input type="button" value="搜索" />
+                    </span>&nbsp
+                    <span><a href="#"  style="color:white;text-decoration:none;line-height:36px;">高级/组合搜索</a></span>
+                    <span>
+                        <div style="background:url(img/d3.jpg);width:279px;height:22px;position:absolute;right:1px;top:3px;">
+                            <a href="#"style="text-decoration:none;line-height:24px;color:#000;position:absolute;right:135px;">购物车暂时为空</a>
+                            <a href="#"style="text-decoration:none;line-height:24px;color:#000;position:absolute;right:60px;">结算</a>
+                            <a href="#"style="text-decoration:none;line-height:24px;color:#000;position:absolute;right:3px;">中心</a>
+                        </div>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!--中-->
+        <div id="pagebody">
+            <!--左-->
+            <div id="bleft">
+                <div id="userbox">
+                    <h3>用户信息</h3>
+                    <ul>
+                        <li style="background:url(img/user/1.gif) no-repeat center left"><a href="#">注册/登陆</a></li>
+                        <li style="background:url(img/user/8.gif) no-repeat center left"><a href="#"></a>购物车(0)</li>
+                        <li style="background:url(img/user/10.gif) no-repeat center left"><a href="#"></a>对比(0)</li>
+                    </ul>
+                </div>
+                <div id="userbox2">
+                    <h3>商品分类</h3>
+                    <div>
+                        <h4><img src="img/dot.gif"/>家用电器</h4>
+                        <ul class="box">
+                            <li><span><a href="#">大家电</a></span>|<span><a href="#">厨房家电</a></span></li>
+                            <li><span><a href="#">汽车用品</a></span>|<span><a href="#">个人护理</a></span></li>
+                            <li><span><a href="#">生活电器</a></span>|<span><a href="#">其他家电</a></span></li>
+                        </ul>
+                        <h4><img src="img/dot.gif"/>手机数码</h4>
+                        <ul class="box">
+                            <li><span><a href="#">数码相机</a></span>|<span><a href="#">手机通讯</a></span></li>
+                            <li><span><a href="#">时尚影音</a></span>|<span><a href="#">数码配件</a></span></li>
+                            <li><span><a href="#">数码影像</a></span>|<span><a href="#">手机配件</a></span></li>
+                        </ul>
+                        <h4><img src="img/dot.gif"/>电脑产品</h4>
+                        <ul class="box">
+                            <li><span><a href="#">笔记本</a></span>|<span><a href="#">办公耗材</a></span></li>
+                            <li><span><a href="#">电脑软件</a></span>|<span><a href="#">网络产品</a></span></li>
+                            <li><span><a href="#">办公设备</a></span>|<span><a href="#">电脑整机</a></span></li>
+                        </ul>
+                        <h4><img src="img/dot.gif"/>日用百货</h4>
+                        <ul class="box">
+                            <li><span><a href="#">玩具乐器</a></span>|<span><a href="#">个护化妆</a></span></li>
+                            <li><span><a href="#">礼品箱包</a></span>|<span><a href="#">钟表首饰</a></span></li>
+                        </ul>
+                        <h4><img src="img/dot.gif"/>服装鞋帽</h4>
+                        <ul class="box">
+                            <li><span><a href="#">运动鞋</a></span>|<span><a href="#">女士服装</a></span></li>
+                            <li><span><a href="#">男士服装</a></span>|<span><a href="#">运动装</a></span></li>
+                        </ul>
+                        <h4><img src="img/dot.gif"/>运动健康</h4>
+                        <ul class="box">
+                            <li><span><a href="#">户外运动</a></span>|<span><a href="#">运动器材</a></span></li>
+                            <li><span><a href="#">养生器械</a></span>|<span><a href="#">健康食品</a></span></li>
+                            <li class="spa1"><span><a href="#">所有分类>></a></span></li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+            <!--中-->
+            <div id="bmiddle">
+                <!--轮播图商品-->
+                <div id="banner">
+                    <div id="banner_bg"></div>
+                    <div id="banner_info"></div>
+                    <ul>
+                        <li class="choose">1</li>
+                        <li>2</li>
+                        <li>3</li>
+                        <li>4</li>
+                        <li>5</li>
+                    </ul>
+                    <div id="banner_list" >
+                        <a href="#" target="_blank"><img  src="img/imgs/p1.jpg" alt="商品1"/></a>
+                        <a href="#" target="_blank"><img  src="img/imgs/p2.jpg" alt="商品2"/></a>
+                        <a href="#" target="_blank"><img  src="img/imgs/p3.jpg" alt="商品3"/></a>
+                        <a href="#" target="_blank"><img  src="img/imgs/p4.jpg" alt="商品4"/></a>
+                        <a href="#" target="_blank"><img  src="img/imgs/p5.jpg" alt="商品5"/></a>
+                    </div>
+                    <div id="arrow">
+                        <span id="left">《</span>
+                        <span id="right">》</span>
+                    </div>
+                </div>
+                <!--商品-->
+                <div class="productbox">
+                    <!--推荐商品-->
+                    <h4 class="h41">推荐商品</h4>
+                    <a href="#"><img class="more" id="more1" src="img/more.gif" alt=""/></a>
+                    <div>
+                        <div>
+                            <ul class="ul1">
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                                <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                    <div>
+                                        <div>喷墨式打印机</div>
+                                        <div>某某品牌</div>
+                                        <div class="price">￥380.00</div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--热卖商品-->
+                    <h4 class="h42">热卖商品</h4>
+                    <a href="#"><img class="more" id="more2" src="img/more.gif" alt=""/></a>
+                    <div>
+                        <ul class="ul2">
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--最新商品-->
+                    <h4 class="h43">最新商品</h4>
+                    <a href="#"><img class="more" id="more3" src="img/more.gif" alt=""/></a>
+                    <div>
+                        <ul class="ul3">
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                            <li><div><a href="#"><img src="img/imgs/p1.jpg" width="100" height="100"/></a></div>
+                                <div>
+                                    <div>喷墨式打印机</div>
+                                    <div>某某品牌</div>
+                                    <div class="price">￥380.00</div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!--右-->
+            <div id="bright">
+                <!--新闻网站-->
+                <div class="brigh">
+                    <h4>网站新闻</h4>
+                    <ul>
+                        <li><a href="#">麦子商城中文版</a></li>
+                        <li><a href="#">麦子商城英文版</a></li>
+                        <li><a href="#">B2B商城系统</a></li>
+                        <li><a href="#">麦子商城中文版</a></li>
+                        <li><a href="#">麦子商城英文版</a></li>
+                        <li><a href="#">B2B商城系统</a></li>
+                        <li><a href="#">独立商城中文版</a></li>
+                        <li><a href="#">PHP商城英文版</a></li>
+                    </ul>
+                </div>
+                <!--客户服务-->
+                <div class="brigh2">
+                    <h4>客户服务</h4>
+                    <div  class="kefu">
+                        <div>
+                            <div>电话：18800467531</div>
+                            <div>邮箱：764145530qq.com</div>
+                            <div>传真：024-2132544</div>
+                        </div>
+                        <div>
+                            &nbsp<span><img src="img/user/QQonline.gif" width="16" height="22"/><span>售前服务</span></span>&nbsp
+                            <span><img src="img/user/QQonline.gif" width="16" height="22"/><span>售后客服</span></span>
+                        </div>
+                        <div>
+                            &nbsp<span><img src="img/user/ww.gif" /><span>十佳掌柜</span></span>&nbsp
+                            <span><img src="img/user/ww.gif" /><span>网软志诚</span></span>
+                        </div>
+                        <div>
+                            &nbsp<span><img src="img/user/msn.gif" /><span>MSN客服1</span></span>&nbsp
+                            <span><img src="img/user/msn.gif" /><span>MSN客服2</span></span>
+                        </div>
+                        <div>
+                            &nbsp<span><img src="img/user/skype.gif" /><span>麦子</span></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!--下-->
+        <div id="pagefooter"></div>
+</div>
+<script src="jslib.js"></script>
+<script>
+    var oBanner=document.getElementById("banner");
+    var aLi=oBanner.getElementsByTagName("li");
+    var oBanner_list=document.getElementById("banner_list");
+    var aImg=oBanner_list.getElementsByTagName("img");
+    var aImgWidth=aImg[0].offsetWidth;
+    var aLeft=document.getElementById("left");
+    var aRight=document.getElementById("right");
+    var iNow=0;
+    oBanner_list.appendChild(aImg[0].cloneNode());
+    oBanner_list.style.width=aImgWidth*aImg.length+"px";
+    for(var i=0;i<aLi.length;i++) {
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            change(this.index);
+        }
+    }
+        aLeft.onclick=aRight.onclick=function(){
+            if(this==aLeft){
+                iNow--;
+                if(iNow==-1){
+                    iNow=4;
+                    oBanner_list.style.left=-(4*aImgWidth)+"px";
+                }
+                change(iNow);
+            }else{
+                iNow++;
+                if(iNow==5){
+                    iNow=0;
+                    oBanner_list.style.left=0;
+                }
+                change(iNow);
+            }
+        }
+    function change(inde){
+        iNow=inde;
+        for(var j=0;j<aLi.length;j++){
+            aLi[j].className=" ";
+        }
+        aLi[iNow].className="choose";
+        animate(oBanner_list,{left:-iNow*aImgWidth});
+        }
+    var timer;
+    function run()
+    {
+        timer= setInterval(function(){aRight.onclick();},1000);
+    }
+    oBanner.onmouseover=function(){
+        clearInterval(timer);
+    }
+    oBanner.onmouseout=function(){
+        run();
+    }
+
+</script>
+</body>
+</html>
