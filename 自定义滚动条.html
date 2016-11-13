@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>自定义滚动条</title>
+    <style>
+        #container{height:200px;width:500px;border:1px solid #000;position:relative;overflow:hidden;}
+        #context{width:470px;background:gray;position:absolute;}
+        #scro{height:200px;width:30px;background:green;position:absolute;right:0}
+        #scrobutton{height:40px;width:30px;background:red;position:absolute;right:0px;cursor:pointer;}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="context">
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            2453645q5436475896097-0-
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈3446哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈3425366哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈364768哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈54647哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈2453675886哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈3425366哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈364768哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+            哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈
+        </div>
+        <div id="scro">
+            <span id="scrobutton"></span>
+        </div>
+    </div>
+<script>
+        var oContainer=document.getElementById("container");
+        var oContext=document.getElementById("context");
+        var oScrobutton=document.getElementById("scrobutton");
+        var DisY=0;
+        oScrobutton.onmousedown=function(e){
+            e=e||window.event;
+            DisY= e.clientY-oContainer.offsetTop-oScrobutton.offsetTop;
+            document.onmousemove=function(e){
+                e=e||window.event;
+                var iTop= e.clientY-oContainer.offsetTop-DisY;
+                if(iTop<=0){
+                    iTop=0;
+                }
+                if(iTop>=oContainer.offsetHeight-oScrobutton.offsetHeight){
+                    iTop=oContainer.offsetHeight-oScrobutton.offsetHeight;
+                }
+                oScrobutton.style.top=iTop+"px";
+
+                var oScale=iTop/(oContainer.offsetHeight-oScrobutton.offsetHeight);
+
+                oContext.style.top=-(oContext.offsetHeight-oContainer.offsetHeight)*oScale+"px";
+                return false;
+            }
+            document.onmouseup = function(){
+                document.onmousemove = null;
+                document.onmouseup = null;
+            };
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #contain{width:700px;}
+        .box{float:left;}
+        #div1{
+            height:200px;
+            width:200px;
+            position:relative;
+        }
+        #div2{
+            height:400px;
+            width:400px;
+            margin-left:20px;
+            position:relative;
+            overflow:hidden;
+            display:none;
+        }
+        #img1{height:200px;width:200px;}
+        #img2{height:1600px;width:1600px;position:absolute;cursor:pointer;}
+        #box1{height:50px;width:50px;background:red;position:absolute;opacity:0;}
+    </style>
+</head>
+<body>
+        <div id="contain">
+            <div id="div1" class="box">
+                <div id="box1">
+                </div>
+                <img id=img1 src="img/1.jpg"/>
+            </div>
+            <div id="div2" class="box">
+                <img id=img2 src="img/1.jpg"/>
+            </div>
+        </div>
+        <script>
+            var oDiv1=document.getElementById("div1");
+            var oBox1=document.getElementById("box1");
+            var oDiv2=document.getElementById("div2");
+            var aImg2=document.getElementById("img2");
+            var DisX=DisY=0;
+            oDiv1.onmouseover=function(e){
+                e=e||window.event;
+                //DisX= e.clientX-oBox1.offsetLeft;
+                //DisY= e.clientY-oBox1.offsetTop;
+                oBox1.style.opacity=0.2;
+
+            }
+            oDiv1.onmousemove=function(e){
+                oDiv2.style.display="block";
+                var iLeft=e.clientX-oBox1.offsetWidth/2;
+                var iTop=e.clientY-oBox1.offsetHeight/2;
+                if(iLeft<=0){
+                    iLeft=0;
+                }
+                if(iTop<=0){
+                    iTop=0;
+                }
+                if(iLeft>=oDiv1.offsetWidth-oBox1.offsetWidth) {
+                    iLeft = oDiv1.offsetWidth-oBox1.offsetWidth;
+                }
+                if(iTop>=oDiv1.offsetHeight-oBox1.offsetHeight)
+                {
+                    iTop=oDiv1.offsetHeight-oBox1.offsetHeight;
+                }
+                oBox1.style.left=iLeft+"px";
+                oBox1.style.top=iTop+"px";
+                var oScale1=iLeft/(oDiv1.offsetWidth-oBox1.offsetWidth);
+                var oScale2=iTop/(oDiv1.offsetHeight-oBox1.offsetHeight);
+                aImg2.style.left=-oScale1*(aImg2.offsetWidth-oDiv2.offsetWidth)+"px";
+                aImg2.style.top=-oScale2*(aImg2.offsetHeight-oDiv2.offsetHeight)+"px";
+                return false;
+            }
+            document.onmouseout=function(){
+                document.onmousemove=null;
+                document.onmouseup=null;
+                oBox1.style.opacity=0;
+                oDiv2.style.display="none";
+            }
+        </script>
+</body>
+</html>
