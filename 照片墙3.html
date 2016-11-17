@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>照片墙3</title>
+    <style>
+        *{margin:0;padding:0;}
+        #contain{height:800px;width:1200px;border:1px solid #000000;margin:0 auto;}
+        #contain img{height:200px;width:300px;float:left;margin-left:30px;margin-top:30px;}
+        .choose{border:5px solid red}
+    </style>
+</head>
+<body>
+    <div id="contain">
+        <img src="img/1.jpg" alt=""/>
+        <img src="img/2.jpg" alt=""/>
+        <img src="img/3.jpg" alt=""/>
+        <img src="img/4.jpg" alt=""/>
+        <img src="img/5.jpg" alt=""/>
+        <img src="img/6.jpg" alt=""/>
+        <img src="img/7.jpg" alt=""/>
+        <img src="img/8.jpg" alt=""/>
+        <img src="img/9.jpg" alt=""/>
+    </div>
+</body>
+<script src="jslib.js"></script>
+<script>
+    //定位
+    var aImg=document.getElementsByTagName("img");
+    var collect=[];
+    var z1Index=0;
+    for(var i=0;i<aImg.length;i++ ){
+        aImg[i].style.left=aImg[i].offsetLeft+"px";
+        aImg[i].style.top=aImg[i].offsetTop+"px";
+    }
+    for(var i=0;i<aImg.length;i++){
+        aImg[i].style.position="absolute";
+        aImg[i].style.margin=0;
+        aImg[i].pos={
+            left:aImg[i].offsetLeft,
+            top:aImg[i].offsetTop
+        }
+    }
+    //拖拽
+    for(var i=0;i<aImg.length;i++){
+        drag(aImg[i]);
+    }
+    function drag(elem){
+        var oMin;
+        var iDisX,iDisY=0;
+        elem.onmousedown=function(e){
+            e=e||window.event;
+            iDisX= e.clientX-elem.offsetLeft;
+            iDisY= e.clientY-elem.offsetTop;
+            document.onmousemove=function(e){
+                e=e||window.event;
+                elem.style.zIndex=++z1Index;
+                e=e||window.event;
+                var iLeft= e.clientX-iDisX;
+                var iTop= e.clientY-iDisY;
+                elem.style.left=iLeft+"px";
+                elem.style.top=iTop+"px";
+               for(var i=0;i<aImg.length;i++){
+                    if(elem==aImg[i]){
+                        continue;
+                    }
+                   aImg[i].className="";
+                   var oCrash=Crash(elem,aImg[i]);
+                   if(oCrash){
+                       collect.push(aImg[i]);
+                   }
+               }
+                 oMin=Min(elem);
+                if(oMin){
+                    oMin.className='choose';
+                }
+                collect=[];
+                return false;
+            }
+            elem.onmouseup=function(e){
+                document.onmousemove=null;
+               elem.onmouseup=null;
+                if(oMin){
+                    animate(elem,oMin.pos);
+                    animate(oMin,elem.pos);
+                    var Temp=oMin.pos;
+                    oMin.pos=elem.pos;
+                    elem.pos=Temp;
+                    oMin.className="";
+                }else{
+                    animate(elem,elem.pos);
+                }
+                collect=[];
+            }
+        }
+    }
+    function Crash(elem,target){
+        var iElemL=elem.offsetLeft;
+        var iElemR=elem.offsetLeft+elem.offsetWidth;
+        var iElemT=elem.offsetTop;
+        var iElemB=elem.offsetTop+elem.offsetHeight;
+        var oTargetL=target.offsetLeft;
+        var oTargetR=target.offsetLeft+target.offsetWidth;
+        var oTargetT=target.offsetTop;
+        var oTargetB=target.offsetTop+target.offsetHeight;
+        if(iElemR<oTargetL||iElemL>oTargetR||iElemB<oTargetT||iElemT>oTargetB){
+            return false;
+        }
+        return true;
+    }
+    function Dis(elem,target){
+        var DisX=elem.offsetLeft-target.offsetLeft;
+        var DisY=elem.offsetTop-target.offsetTop;
+        return Math.sqrt(DisX*DisX+DisY*DisY);
+    }
+    function Min(elem){
+        var Min0=9999;
+        var MinIndex=-1;
+        for(var j=0;j<collect.length;j++){
+            var oDis=Dis(elem,collect[j]);
+            if(oDis<Min0){
+                Min0=oDis;
+                MinIndex=j;
+            }
+        }
+        return collect[MinIndex];
+    }
+</script>
+</html>
