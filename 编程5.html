@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ul,ol{list-style:none;}
+        a{text-decoration:none;}
+        #contain {height:400px;width:480px;border:0px solid #000000;margin:40px 300px;position:relative;overflow:hidden;}
+        #imgs{height:330px;width:480px;}
+        #imgs img{height:330px;width:480px;position:absolute;}
+        #smallbox{height:70px;width:1000px;position:absolute;}
+        #smallbox img{height:70px;width:114px;}
+        .smallopacity{opacity:0.3;}
+        #black{height:30px;width:480px;background:#000000;opacity:0.4;position:absolute;top:300px;z-index:10000;}
+        #space{height:30px;width:30px;color:white;font-weight:bold;position:absolute;top:307px;right:10px;}
+        #space div{position:absolute;background:black;}
+        .spacenum{z-index:10000;}
+        #arrow{opacity:0.5;position:relative;z-index:10000;}
+        #arrow #left{height:55px;width:45px;background:url(imgs/btn3.png);position:absolute;top:130px;left:0;}
+        #arrow #right{height:55px;width:45px;background:url(imgs/btn4.png);position:absolute;top:130px;right:0;}
+    </style>
+</head>
+<body>
+<div id="contain">
+    <div id="imgs">
+        <img src="imgs/1.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/2.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/3.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/4.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/5.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/6.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/7.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/8.jpg" alt=""><a href=""></a></img>
+    </div>
+    <div id="black"></div>
+    <div id="space">
+        <div class="spacenum">1/8</div>
+        <div>2/8</div>
+        <div>3/8</div>
+        <div>4/8</div>
+        <div>5/8</div>
+        <div>6/8</div>
+        <div>7/8</div>
+        <div>8/8</div>
+    </div>
+    <div id="arrow">
+        <span id="left"></span>
+        <span id="right"></span>
+    </div>
+    <div id="smallbox">
+        <img src="imgs/1.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/2.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/3.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/4.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/5.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/6.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/7.jpg" alt=""><a href=""></a></img>
+        <img src="imgs/8.jpg" alt=""><a href=""></a></img>
+    </div>
+</div>
+</body>
+<script src="jslib.js"></script>
+<script>
+    var OContain=document.getElementById("contain");
+    var oImgs=document.getElementById("imgs");
+    var oImgbig=oImgs.getElementsByTagName("img");
+    var oSmallbox=document.getElementById("smallbox");
+    var oImgsmall=oSmallbox.getElementsByTagName("img");
+    var oImgwidth=oImgsmall[0].offsetWidth;
+    var oSpace=document.getElementById("space");
+    var oSpacenum=oSpace.getElementsByTagName("div");
+    var oArrow=document.getElementById("arrow");
+    var iLeft=document.getElementById("left");
+    var iRight=document.getElementById("right");
+    var zindex=1;
+    var i=0;
+    oSmallbox.appendChild(oImgsmall[0].cloneNode());
+    oSmallbox.style.width=oImgwidth*10+"px";
+    function  change(){
+        for(var j=0;j<oSpacenum.length;j++) {
+            oSpacenum[j].className = "";
+            oImgsmall[j].className="";
+        }
+        if(i<=7){
+            oImgsmall[8].className="";
+            oSpacenum[i].className="spacenum";
+            oImgsmall[i].className="smallopacity";
+            if(i==3){
+                animate(oSmallbox,{left:-364});
+                //oSmallbox.style.left=-364+"px";
+            }if(i>3&&i<5){
+                animate(oSmallbox,{left:-((OContain.offsetWidth-oImgwidth)/3)*(i-3)-364});
+            }if(i>=5&&i<8){
+                animate(oSmallbox,{left:-((OContain.offsetWidth-oImgwidth)/3)*5})
+            }
+            oImgbig[i].style.opacity=0;
+            oImgbig[i].style.zIndex=++zindex;
+            animate(oImgbig[i],{opacity:100});
+            i++;
+        }else{
+            oImgsmall[8].className="smallopacity";
+            animate(oSmallbox,{left:0})
+            i=0;
+            //animate(oSmallbox,);
+            oSpacenum[i].className="spacenum";
+            oImgbig[i].style.opacity=0;
+            oImgbig[i].style.zIndex=++zindex;
+            animate(oImgbig[i],{opacity:100});
+            oImgsmall[0].className="smallopacity";
+            i++;
+        }
+    }
+    function mouse(){
+        OContain.onmouseover=function(){
+            oArrow.style.display="block";
+            iRight.onclick=iLeft.onclick=function(){
+                change();
+            }
+        }
+    }
+    var timer;
+    function run(){
+        timer=setInterval(function(){change()},1200);
+    }
+    run();
+    OContain.onmouseover=function(){
+        clearInterval(timer);
+    }
+    OContain.onmouseout=function(){
+        run();
+    }
+
+
+
+
+
+</script>
+</html>
