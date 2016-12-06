@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body{background:white;perspective:1500px;perspective-origin: 0% 50%;}
+        #contain{height:150px; width:150px; margin:50px auto;line-height:150px;text-align:center;position:relative;transform-style:preserve-3d;animation:aaa 3s linear infinite;}
+        #contain div{height:150px;width:150px;border-radius:10%;background:gray;font-size:200%;opacity:0.3;position:absolute;}
+        #contain div:nth-child(1){  transform:rotateY(180deg) translateZ(75px) ; }
+        #contain div:nth-child(2){  transform:rotateX(90deg) translateZ(75px) ; }
+        #contain div:nth-child(3){  transform:rotateX(-90deg) translateZ(75px) ; }
+        #contain div:nth-child(4){  transform:rotateY(-90deg) translateZ(75px) ; }
+        #contain div:nth-child(5){  transform:rotateY(90deg) translateZ(75px) ; }
+        #contain div:nth-child(6){  transform:rotateY(0deg) translateZ(75px) ; }
+        @keyframes aaa {
+            100%{
+                transform:rotateY(360deg);
+            }
+        }
+        /**----------------------------------------------------------------------------*/
+       /* #contain2{height:70px;width:70px;border:1px solid #000000;margin:100px auto;}
+        #contain div{height:70px;width:70px;}*/
+
+    </style>
+</head>
+<body>
+<div id="contain2"  class="contains2">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+</div>
+<div id="contain" class="contains">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+    <div>4</div>
+    <div>5</div>
+    <div>6</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin:0;padding:0;}
+        ul{list-style:none;}
+        #contain{height:200px;width:200px;border:2px solid #000;border-radius:50%;margin:50px auto;position:relative;}
+        #time li{
+            height:10px;
+            width:3px;
+            background:#000000;
+            position:absolute;
+            left:100px;
+            transform-origin: 0 100px;;
+        }
+        #time li:nth-child(5n+1){
+            height:14px;
+            width:5px;
+        }
+        #hour{
+            height:40px;
+            width:6px;
+            background:#000000;
+            position:absolute;
+            top: 60px;
+            left:97px;
+            transform-origin: bottom;
+        }
+        #minute{
+            height:50px;
+            width:4px;
+            background:red;
+            position:absolute;
+            top: 50px;
+            left:98px;
+            transform-origin: bottom;
+        }
+        #second{
+            height:60px;
+            width:2px;
+            background:blue;
+            position:absolute;
+            top: 40px;
+            left:99px;
+            transform-origin: bottom;
+           animation:aa 1s;
+        }
+        @keyframes aa {
+
+        }
+    </style>
+</head>
+<body>
+<div id="contain">
+    <ul id="time"></ul>
+    <div id="hour"></div>
+    <div id="minute"></div>
+    <div id="second"></div>
+</div>
+</body>
+<script>
+    var oTime=document.getElementById("time");
+        oHour=document.getElementById("hour");
+        oMinute=document.getElementById("minute");
+        oSecond=document.getElementById("second");
+    var HTML="";
+    for(var i=0;i<60;i++){
+        HTML+="<li style='transform:rotate("+i*6+"deg)'></li>"
+    }
+    oTime.innerHTML=HTML;
+    function run(){
+        var datas = new Date();
+        Second = datas.getSeconds();
+        Minute = datas.getMinutes()+Second/60;
+        Hour = datas.getHours()+Minute/60;
+        oHour.style.transform = "rotate("+Hour*30+"deg)";
+        oMinute.style.transform = "rotate("+Minute*6+"deg)";
+        oSecond.style.transform = "rotate("+Second*6+"deg)";
+    }
+    setInterval(run,1000);
+</script>
+</html>
